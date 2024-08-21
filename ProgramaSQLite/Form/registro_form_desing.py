@@ -62,6 +62,31 @@ class FormularioRegistroDesing(tk.Tk):
         self.campo_cargo = ttk.Entry(self.marco_registro, font=
                                       ("Times", 14))
         self.campo_cargo.pack(side=tk.LEFT, padx=5, pady=10)
+
+        etiqueta_compra = tk.Label(self.marco_registro, text="Compra", font=
+                                   ("Times", 14),fg="#666a88", bg=color_fondo)
+        etiqueta_compra.pack(side=tk.LEFT, padx=5, pady=10)
+
+        self.campo_compra = ttk.Entry(self.marco_registro, font=
+                                        ("Times", 14))
+        self.campo_compra.pack(side=tk.LEFT, padx=5, pady=10)
+
+        etiqueta_venta = tk.Label(self.marco_registro, text="Venta", font=
+                                      ("Times", 14),fg="#666a88", bg=color_fondo)
+        etiqueta_venta.pack(side=tk.LEFT, padx=5, pady=10)
+
+        self.campo_venta = ttk.Entry(self.marco_registro, font=
+                                        ("Times", 14))
+        self.campo_venta.pack(side=tk.LEFT, padx=5, pady=10)
+
+        etiqueta_gerencia = tk.Label(self.marco_registro, text="Gerencia", font=
+                                      ("Times", 14),fg="#666a88", bg=color_fondo)
+        etiqueta_gerencia.pack(side=tk.LEFT, padx=5, pady=10)
+
+        self.campo_gerencia = ttk.Entry(self.marco_registro, font=
+                                        ("Times", 14))
+        self.campo_gerencia.pack(side=tk.LEFT, padx=5, pady=10)
+        
         ## Creación de los botones de la ventana
         self.btn_registro = tk.Button(self.marco_acciones, text="Registrar",
                                      font=("Times", 14), fg="#fff", bg="#51aded", bd=0,padx=15, command=self.registrar_producto) 
@@ -103,18 +128,26 @@ class FormularioRegistroDesing(tk.Tk):
 
         self.tree = ttk.Treeview(self.marco_productos, show='headings',
                                  yscrollcommand=tree_scroll.set)
-        self.tree['columns'] = ("Id", "Nombre", "Cargo", "Salario")
+        self.tree['columns'] = ("Id", "Nombre", "Cargo", "Salario", "compra", "venta", "gerencia")
         self.tree.column('#0')
         self.tree.column('Id', width=10)
         self.tree.column('Nombre')
         self.tree.column('Cargo')
         self.tree.column('Salario')
+        self.tree.column('compra')
+        self.tree.column('venta')
+        self.tree.column('gerencia')
+        
 
         self.tree.heading('#0', text='')
         self.tree.heading('Id', text='Id')
         self.tree.heading('Nombre', text='Nombre')
         self.tree.heading('Cargo', text='Cargo')
         self.tree.heading('Salario', text='Salario')
+        self.tree.heading('compra', text='Compra')
+        self.tree.heading('venta', text='Venta')
+        self.tree.heading('gerencia', text='Gerencia')
+        
 
         self.tree.pack(expand=True, fill='both')
         self.tree.bind("<<TreeviewSelect>>", self.al_seleccionar_treeview)
@@ -147,6 +180,9 @@ class FormularioRegistroDesing(tk.Tk):
             self.campo_nombre.delete(0, 'end')
             self.campo_salario.delete(0, 'end')
             self.campo_cargo.delete(0, 'end')
+            self.campo_compra.delete(0, 'end')
+            self.campo_venta.delete(0, 'end')
+            self.campo_gerencia.delete(0, 'end')
             self.btn_registro.pack(**self.obtener_conf_btn_pack())
             self.btn_eliminar.pack_forget()
             self.btn_modificar.pack_forget()
