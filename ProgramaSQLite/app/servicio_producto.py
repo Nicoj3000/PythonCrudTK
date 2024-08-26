@@ -87,7 +87,7 @@ class ServicioProducto():
         with Session(self.engine) as session:
             try:
                 # Eliminar el departamento asociado
-                departamento = session.query(DepartamentoModel).filter_by(producto_id=id).one_or_none()
+                departamento = session.query(DepartamentoModel).filter_by(id=id).one_or_none()
                 if departamento:
                     session.delete(departamento)
                 

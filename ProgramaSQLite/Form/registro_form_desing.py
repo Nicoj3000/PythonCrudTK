@@ -121,9 +121,9 @@ class FormularioRegistroDesing(tk.Tk):
                         foreground='#000')
         style.configure('Treeview.Heading', background='#6f9a8d', foreground='#fff')
 
-        tree_scroll = ttk.Scrollbar(self.marco_productos)
+        tree_scroll = ttk.Scrollbar(self.marco_productos, orient=tk.VERTICAL)
         tree_scroll.pack(side=tk.RIGHT, fill=tk.Y)
-        tree_scroll_x = ttk.Scrollbar(self.marco_productos, orient='horizontal')
+        tree_scroll_x = ttk.Scrollbar(self.marco_productos, orient=tk.HORIZONTAL)
         tree_scroll_x.pack(side=tk.BOTTOM, fill=tk.X)
 
         self.tree = ttk.Treeview(self.marco_productos, show='headings',
